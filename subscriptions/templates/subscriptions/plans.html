@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans</title>
+</head>
+<body>
+    <h1>Choose Your Subscription Plan</h1>
+
+    <div>
+        {% if plans %}
+            {% for plan in plans %}
+                <div>
+                    <h3>{{ plan.name }}</h3>
+                    <p>{{ plan.description }}</p>
+                    <p>${{ plan.price }} per {{ plan.duration_months }} month(s)</p>
+                    <a href="{% url 'signup' plan.id %}">
+                        <button>Subscribe</button>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No subscription plans available.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
